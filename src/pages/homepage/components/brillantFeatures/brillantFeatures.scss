@@ -1,0 +1,78 @@
+@use "../../../../styles/sass/color.scss" as color;
+@use "../../../../styles/sass/mixins.scss" as mixin;
+
+.brillantFeatures {
+  background-color: color.$primary-white-variant;
+  padding: 6rem 12rem;
+}
+
+.brillantFeatures__text__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3em;
+
+  & > h1 {
+    margin-left: 0.5em;
+    position: relative;
+    font-size: 3rem;
+
+    &::before {
+      content: "";
+      position: absolute;
+      background-color: color.$primary-color;
+      width: 100%;
+      height: 10px;
+      bottom: 0px;
+      border-radius: 10px;
+    }
+  }
+
+  & > svg {
+    animation: rotate 1s infinite;
+    animation-delay: 10s;
+  }
+
+  @keyframes rotate {
+    100% {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.brillantFeatures__cards {
+  display: flex;
+  justify-content: center;
+  gap: 3em;
+  margin-top: 2em;
+}
+
+.brillantFeatures__card {
+  --items-per-screen: 3;
+  flex-basis: calc(100% / (var(--items-per-screen)));
+  @include mixin.primaryBoxShadow;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: color.$darkslategray;
+}
+
+.card__text__container {
+  padding: 2rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & > h4 {
+    font-size: 1.55rem;
+    margin-bottom: 0.75em;
+    color: color.$primary-color;
+    text-align: center;
+  }
+
+  & > p {
+    text-align: center;
+    font-size: 1.15rem;
+    color: color.$primary-white;
+    letter-spacing: 0.5px;
+  }
+}
