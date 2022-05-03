@@ -1,0 +1,41 @@
+@use "../../styles/sass/color.scss" as color;
+@use "../../styles/sass/mixins.scss" as mixin;
+
+// .avis__header {
+//   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.856));
+// }
+.avis__header__navigations {
+  display: flex;
+  align-items: center;
+
+  & > div:nth-child(2),
+  & > div:nth-child(3) {
+    margin-left: auto;
+  }
+
+  padding: 1rem 3rem;
+
+  .link__group {
+    display: flex;
+
+    & > div:not(:last-child) {
+      margin-right: 5rem;
+    }
+
+    & > div > a {
+      color: color.$primary-white;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+  }
+  background-color: color.$primary-black-variant-2;
+}
+
+.avis__header.avis__header--stickyActive {
+  position: sticky;
+  z-index: 999999;
+  background-color: color.$darkslategray;
+  top: 0;
+  left: 0;
+  right: 0;
+}

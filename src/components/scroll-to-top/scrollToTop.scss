@@ -1,0 +1,28 @@
+@use "../../styles/sass/mixins.scss" as mx;
+@use "../../styles/sass/color.scss" as color;
+.scrollToTop,
+.hero__section__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scrollToTop {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  z-index: 1000;
+  background-color: color.$primary-color;
+  border-radius: 100%;
+  @include mx.primaryBoxShadow;
+  transform: translateX(-200%);
+  transition: transform 0.3s ease;
+}
+
+.scrollToTop.scrollToTop--active {
+  transform: translateX(0%);
+}
+
+.hero__section__link {
+  padding: 0.5rem;
+}

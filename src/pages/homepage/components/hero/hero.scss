@@ -1,0 +1,48 @@
+@use "../../../../styles/sass/color.scss" as color;
+
+.avis__hero {
+  min-height: 750px;
+  height: 95vh;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.85)
+    ),
+    url("../../../../assets/images/intellias-bg-main.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+}
+
+.avis__hero__text {
+  padding: 15rem 15rem 4rem;
+  font-family: "Oswald", sans-serif;
+}
+
+.avis__intro__text {
+  font-size: 100px;
+  line-height: 1.25;
+  color: #e2e2e2;
+  max-width: 600px;
+  display: flex;
+  align-items: center;
+
+  & > span:nth-child(2) {
+    margin-left: 3rem;
+  }
+}
+
+.avis__intro__text:first-child > span:first-child {
+  color: color.$primary-color;
+}
+.avis__intro__text:last-child > span:last-child {
+  color: color.$primary-color;
+}
+
+.avis__intro__description {
+  font-size: 25px;
+  line-height: 36px;
+  color: #8c8c8c;
+  max-width: 800px;
+  margin-top: 1em;
+}
