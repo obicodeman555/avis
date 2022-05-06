@@ -6,8 +6,6 @@ import "./hero.scss";
 const Hero = React.forwardRef((props, ref) => {
   const [formHidden, setFormHidden] = React.useState(false);
 
-  console.log(formHidden);
-
   const FormHandler = useCallback((e) => {
     e.preventDefault();
     setFormHidden((prev) => !prev);
