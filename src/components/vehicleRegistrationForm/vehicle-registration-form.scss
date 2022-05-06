@@ -57,9 +57,48 @@
 
 .avis__gstForm__control__checkbox {
   position: relative;
+
   & > input[type="checkbox"] {
     position: absolute;
+    left: -999px;
   }
+
+  & > input[type="checkbox"]:checked ~ .vreg__addFiles__checkboxLabel::before {
+    background-color: color.$primary-color;
+  }
+  & > input[type="checkbox"]:checked ~ .vreg__addFiles__checkboxLabel::after {
+    display: block;
+  }
+}
+
+.vreg__addFiles__checkboxLabel {
+  margin-left: 25px;
+  color: color.$primary-color;
+  font-size: 1.105rem;
+  cursor: pointer;
+}
+
+//custom check box
+.vreg__addFiles__checkboxLabel::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  bottom: 2px;
+  left: 0;
+  border: 1px solid color.$primary-color;
+}
+.vreg__addFiles__checkboxLabel::after {
+  display: none;
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 11px;
+  top: 5px;
+  left: 7px;
+  transform: rotate(45deg);
+  border-bottom: 2px solid color.$primary-black;
+  border-right: 2px solid color.$primary-black;
 }
 
 @media screen and (max-width: 1200px) {
