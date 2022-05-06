@@ -8,6 +8,10 @@ const AdminLoginPage = React.lazy(() =>
 );
 const GuestLoginPage = React.lazy(() => import("./pages/auth/guest/Login"));
 
+const GuestHomepage = React.lazy(() =>
+  import("./pages/guestHomepage/GuestHomepage")
+);
+
 function App() {
   return (
     <Suspense fallback={<Loading />}>
@@ -15,6 +19,7 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/auth/admin" element={<AdminLoginPage />} />
         <Route path="/auth/guest" element={<GuestLoginPage />} />
+        <Route path="/guest/home" element={<GuestHomepage />} />
       </Routes>
     </Suspense>
   );
