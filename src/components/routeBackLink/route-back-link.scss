@@ -1,0 +1,33 @@
+@use "../../styles/sass/color.scss" as color;
+
+//routeBack Link
+.route-back {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+
+  &__img-block {
+    width: 30px;
+    margin-right: 1rem;
+    // transform: translateX(0);
+  }
+
+  &__text {
+    display: flex;
+    align-items: stretch;
+    color: color.$primary-white-variant;
+    letter-spacing: 0.5px;
+
+    // a {
+    //   border: 1px solid red;
+    // }
+
+    &:hover {
+      color: color.$primary-color;
+    }
+  }
+
+  //   &__text:hover + &__img-block {
+  //     transform: translateX(10px);
+  //   }
+}

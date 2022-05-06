@@ -1,0 +1,254 @@
+@use "../../../styles/sass/color.scss" as color;
+@use "../../../styles/sass/variables.scss" as var;
+@use "../../../styles/sass/mixins.scss" as mixin;
+.avis-admin-access {
+  display: flex;
+  align-items: stretch;
+  height: 100vh;
+}
+
+.avis-admin-access > .illustrator,
+.avis-admin-access > .admin-access__block {
+  padding-left: 6rem;
+  padding-right: 6rem;
+}
+
+.avis-admin-access > .illustrator {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  background-color: #e8f0fe;
+}
+
+.illustrator-image__block__container {
+  flex-grow: 1;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.illustrator-item__block {
+  & > div {
+    display: flex;
+    height: calc(100vh / 5);
+
+    //does not apply to the first child
+    &:not(:first-child) {
+      margin-top: 2rem;
+    }
+
+    & > span {
+      flex-grow: 1;
+      height: 100%;
+      box-shadow: -1px -1px 2px rgba(36, 36, 36, 0.212),
+        1px 1px 2px rgba(36, 36, 36, 0.212);
+
+      &:not(:first-child) {
+        margin-left: 1rem;
+      }
+    }
+  }
+}
+
+//auerethics for each containing span element
+
+.illustrator-item__block > div:first-child {
+  & > span:first-child {
+    background-color: #5a5a5a;
+    border-radius: var.$small-radius var.$large-raidus var.$small-radius
+      var.$small-radius;
+  }
+  & > span:nth-child(2) {
+    background-color: color.$primary-black-variant;
+    border-radius: var.$small-radius var.$small-radius var.$large-raidus
+      var.$small-radius;
+  }
+  & > span:last-child {
+    background-color: color.$primary-color;
+    border-radius: var.$large-raidus var.$small-radius var.$small-radius
+      var.$small-radius;
+  }
+}
+.illustrator-item__block > div:nth-child(2) {
+  & > span:first-child {
+    background-color: color.$primary-black;
+    border-radius: var.$large-raidus var.$small-radius;
+  }
+  & > span:nth-child(2) {
+    background-color: #d2d8f7;
+    border-radius: var.$small-radius var.$large-raidus var.$large-raidus
+      var.$small-radius;
+  }
+  & > span:last-child {
+    background-color: #2fdf84;
+    border-radius: var.$full-radius;
+  }
+}
+.illustrator-item__block > div:nth-child(3) {
+  --large-raidus: 140px;
+  --small-radius: 10px;
+  & > span:first-child {
+    background-color: #f8e599;
+    border-radius: var.$large-raidus var.$small-radius;
+    flex-grow: 2;
+  }
+  & > span:nth-child(2) {
+    background-color: #5a5a5a;
+    border-radius: var.$small-radius var.$small-radius var.$large-raidus
+      var.$large-raidus;
+  }
+}
+.illustrator-item__block > div:last-child {
+  & > span:first-child {
+    background-color: #5a5a5a;
+    border-radius: var.$small-radius var.$large-raidus;
+  }
+  & > span:nth-child(2) {
+    background-color: color.$primary-black-variant;
+    border-radius: var.$full-radius;
+  }
+  & > span:last-child {
+    background-color: #2c6c49;
+    border-radius: var.$large-raidus var.$small-radius var.$small-radius
+      var.$small-radius;
+  }
+}
+
+//seperatebackground
+#admin-access__block__bg {
+  background-color: rgb(36, 36, 36);
+}
+
+//form styles
+.avis-admin-access > .admin-access__block {
+  position: relative;
+  flex-grow: 1;
+}
+.admin-access__block-container {
+  position: absolute;
+  top: 25rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 400px;
+  max-width: 400px;
+
+  & > div {
+    margin-bottom: 2rem;
+  }
+}
+
+.admin-access__form-block {
+  background-color: color.$darkslategray;
+  padding: 40px;
+  @include mixin.smallBoxShadow;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    & > h3 {
+      color: color.$primary-white;
+      font-size: 1.55rem;
+      margin-bottom: 0.5rem;
+    }
+    & > p {
+      text-align: center;
+      font-size: 13px;
+      color: color.$primary-color-light;
+    }
+  }
+}
+
+.admin-acess--form-container > div {
+  display: flex;
+  flex-direction: column;
+  &:not(:first-child) {
+    margin-top: 2rem;
+  }
+
+  & > label {
+    margin-bottom: 0.75rem;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    color: #cccccc;
+  }
+
+  & > span {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.admin-acess--form-control__input-block > input {
+  border: 1.5px solid #f3ddbf;
+  outline: none;
+  background-color: transparent;
+  padding: 15px;
+  color: #fff;
+
+  &:focus {
+    transition: border 0.3s ease-in;
+    border: 1.5px solid color.$primary-color-light;
+  }
+}
+
+//toggle access type(login/registration) and forget-pwd styles
+.admin-access__moreActions__block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #cccccc;
+  font-size: 14px;
+  & > div {
+    display: flex;
+    align-items: center;
+  }
+
+  & > div:first-child > button {
+    margin-left: 0.5rem;
+    background-color: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+    font-size: inherit;
+    color: #e8f0fe;
+    padding: 10px;
+    transition: color 0.75s ease-in;
+    font-weight: 500;
+    //styling before
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: color.$primary-color;
+      bottom: 3px;
+      z-index: -1;
+      border-radius: 10px;
+      transition: height 0.5s, bottom 0.1s ease-in;
+    }
+
+    &:hover {
+      color: #000;
+    }
+
+    &:hover::before,
+    &:focus::before {
+      bottom: 0;
+      height: 100%;
+    }
+  }
+
+  & > div:last-child {
+    margin-top: 1.35rem;
+    color: color.$primary-white-variant;
+  }
+
+  .admin-access__forgot-password__block > a:hover {
+    color: color.$primary-color;
+  }
+}

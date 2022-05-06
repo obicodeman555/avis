@@ -1,0 +1,12 @@
+.position-all-points {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+@supports (inset: 0) {
+  .position-all-points {
+    inset: 0;
+  }
+}
