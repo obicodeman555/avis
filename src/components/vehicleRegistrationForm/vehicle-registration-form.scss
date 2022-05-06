@@ -1,0 +1,145 @@
+@use "../../styles/sass/color.scss" as color;
+@use "../../styles/sass/mixins.scss" as mixin;
+
+.avis-reg-popup {
+  position: fixed;
+  z-index: 999999999;
+  background-color: rgba(36, 36, 36, 0.788);
+  padding-top: 5rem;
+  padding-bottom: 10rem;
+  transform: translateX(200%);
+  transition: transform 0.5s, opacity 0.75s ease-in;
+  opacity: 0;
+}
+.avis-reg-popup__show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.avis-reg-popup__close {
+  position: fixed;
+  z-index: 9999;
+  left: 62%;
+  top: 3%;
+  display: flex;
+  & > button {
+    display: flex;
+    padding: 1rem;
+    border-radius: 50%;
+    background-color: transparent;
+    transition: background-color 0.5s, fill 1s, cubic-bezier(0.19, -1, 0.22, -1);
+
+    &:hover,
+    &:focus {
+      background-color: #e8f0fe73;
+
+      & > svg path {
+        fill: #000;
+      }
+    }
+  }
+}
+
+.avis-reg-popup__container {
+  margin: 0 auto;
+  background-color: color.$darkslategray;
+  @include mixin.moreBlurShadow;
+  border: 1px solid color.$primary-black-variant-2;
+  overflow: hidden;
+}
+
+.avis-reg-content {
+  padding: 40px 45px;
+}
+// .avis-reg-popup__container-animated{
+//     transition: transform ease-in-out .3s;
+// }
+
+.avis__gstForm__control__checkbox {
+  position: relative;
+  & > input[type="checkbox"] {
+    position: absolute;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .t-width_6 {
+    max-width: 460px;
+  }
+}
+
+.t-width_6 {
+  max-width: 560px;
+}
+
+//form intro text styles
+.avis-reg-introText {
+  font-size: 1.6rem;
+  color: color.$primary-white;
+  margin-bottom: 2rem;
+  &__container {
+    text-align: center;
+    letter-spacing: 0.5px;
+  }
+}
+
+//form input styles
+.avis__gstForm__control {
+  &:not(:last-child) {
+    margin-bottom: 1.5rem;
+  }
+
+  //input container
+  .text-input-block {
+    display: flex;
+
+    & > input[type="text"] {
+      flex-grow: 1;
+      background-color: transparent;
+      border: 0;
+      padding: 15px 6px;
+      font-size: 1.25rem;
+      color: #000;
+      font-family: inherit;
+      outline: none;
+      border-bottom: 1.5px solid color.$primary-white;
+      &:focus {
+        background-color: #e8f0fe;
+      }
+    }
+  }
+}
+
+.avis__vregForm__componentWrapper {
+  display: flex;
+
+  & > div {
+    flex-grow: 1;
+  }
+}
+
+.avis__gstForm__control__file {
+  display: flex;
+  max-width: 100px;
+
+  & > input[type="file"] {
+    display: none;
+  }
+
+  & > button {
+    border: 0;
+    background-color: color.$primary-color;
+    display: flex;
+    border-radius: 5px;
+
+    border: 2px solid #e8f0fe;
+  }
+  .vreg__addFiles__label {
+    cursor: pointer;
+    text-align: center;
+    flex-grow: 1;
+    padding: 10px;
+    font-size: 0.951rem;
+    font-weight: 500;
+  }
+}

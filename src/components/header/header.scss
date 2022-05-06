@@ -7,7 +7,8 @@
 .avis__header__navigations {
   display: flex;
   align-items: center;
-
+  position: relative;
+  background-color: color.$primary-black-variant-2;
   & > div:nth-child(2),
   & > div:nth-child(3) {
     margin-left: auto;
@@ -22,20 +23,81 @@
       margin-right: 5rem;
     }
 
+    //link styles
     & > div > a {
       color: color.$primary-white;
       font-weight: 500;
       letter-spacing: 1px;
+      transition: color, transform 100ms cubic-bezier(-1, 4, -4, 1);
+
+      //hover style
+      &:hover {
+        color: color.$primary-color;
+      }
     }
   }
-  background-color: color.$primary-black-variant-2;
 }
 
 .avis__header.avis__header--stickyActive {
   position: sticky;
-  z-index: 999999;
+  z-index: 99;
   background-color: color.$darkslategray;
   top: 0;
   left: 0;
   right: 0;
+}
+
+//styles for slide in login account access dark background slated card
+
+.loginAccess__links__card {
+  position: absolute;
+  right: 35px;
+  z-index: 999;
+  top: 69px;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.link__buttonShaped--linkToAcctType > span:first-child {
+  width: 20px;
+  height: 20px;
+}
+.link__buttonShaped--linkToAcctType > span:last-child {
+  width: 15px;
+  height: 15px;
+}
+#loginAccess__slideCard header div:first-child {
+  margin-right: 20px;
+}
+
+.link__buttonShaped {
+  background-color: color.$primary-black-variant-2;
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px #e3cb6998, -1px -1px 5px #e3cb692f;
+  margin-bottom: 15px;
+
+  &:first-child {
+    margin-top: 10px;
+  }
+
+  &:hover {
+    box-shadow: none;
+  }
+
+  &--linkToAcctType {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 10px;
+  }
+
+  .text__acctType {
+    color: #ddd;
+    width: 130px;
+    max-width: 130px;
+    margin-left: 10px;
+  }
 }
