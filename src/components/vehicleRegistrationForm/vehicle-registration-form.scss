@@ -1,6 +1,11 @@
 @use "../../styles/sass/color.scss" as color;
 @use "../../styles/sass/mixins.scss" as mixin;
 
+// main container housing registration form
+//container is positioned fixed and made blur
+//for registration form to sit on
+//this style also hides the registartio form for javascript programming
+//using the translate 200%
 .avis-reg-popup {
   position: fixed;
   z-index: 999999999;
@@ -10,12 +15,29 @@
   transform: translateX(200%);
   transition: transform 0.5s, opacity 0.75s ease-in;
   opacity: 0;
+  overflow-y: scroll;
+
+  @media (min-width: 1639px) {
+    overflow-y: hidden;
+  }
 }
+
+.avis-reg-popup__container {
+  margin: 0 auto;
+  background-color: color.$darkslategray;
+  @include mixin.moreBlurShadow;
+  border: 1px solid color.$primary-black-variant-2;
+}
+
+// javascript dynamic style
+//applied when registration form is invoked
 .avis-reg-popup__show {
   transform: translateX(0);
   opacity: 1;
 }
 
+//style for icon marked x-shaped that is used to remove
+//registration form dynamically
 .avis-reg-popup__close {
   position: fixed;
   z-index: 9999;
@@ -40,20 +62,9 @@
   }
 }
 
-.avis-reg-popup__container {
-  margin: 0 auto;
-  background-color: color.$darkslategray;
-  @include mixin.moreBlurShadow;
-  border: 1px solid color.$primary-black-variant-2;
-  overflow: hidden;
-}
-
 .avis-reg-content {
   padding: 40px 45px;
 }
-// .avis-reg-popup__container-animated{
-//     transition: transform ease-in-out .3s;
-// }
 
 .avis__gstForm__control__checkbox {
   position: relative;
@@ -71,6 +82,7 @@
   }
 }
 
+// label related to checkbox styles
 .vreg__addFiles__checkboxLabel {
   margin-left: 25px;
   color: color.$primary-color;
@@ -88,17 +100,18 @@
   left: 0;
   border: 1px solid color.$primary-color;
 }
+//check mark style for clicked indication
 .vreg__addFiles__checkboxLabel::after {
   display: none;
   content: "";
   position: absolute;
-  width: 6px;
+  width: 7px;
   height: 11px;
-  top: 5px;
+  top: 2px;
   left: 7px;
   transform: rotate(45deg);
-  border-bottom: 2px solid color.$primary-black;
-  border-right: 2px solid color.$primary-black;
+  border-bottom: 3px solid color.$primary-black;
+  border-right: 3px solid color.$primary-black;
 }
 
 @media screen and (max-width: 1200px) {
