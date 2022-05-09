@@ -1,0 +1,208 @@
+@use "../../styles/sass/color.scss" as color;
+.guest-homepage {
+  background-color: #e7ebf1;
+}
+.guest-homepage__header {
+  display: flex;
+  align-items: center;
+  padding-left: 8rem;
+  padding-right: 8rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: color.$primary-black-variant-2;
+  box-shadow: 0px 1px 20px 10px rgb(17 20 45 / 50%);
+}
+
+//spacing all containing element except the first one
+.guest-homepage__header__user > span:not(:first-child) {
+  margin-left: 0.35rem;
+}
+.guest-homepage__header__user > span:nth-child(2) {
+  font-size: 1rem;
+  color: color.$dim-gray;
+  font-weight: 700;
+}
+.guest-homepage__header__user > span:nth-child(3) {
+  font-size: 1.35rem;
+  color: #b1afaf;
+}
+
+.guest-homepage__nav {
+  margin-left: auto;
+  max-width: 600px;
+  width: 600px;
+}
+
+.guest-homepage__header__user,
+.guest-homepage__navLinks {
+  display: flex;
+  align-items: center;
+}
+
+.guest-homepage__icon-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+}
+
+.guest-homepage__navLinks {
+  max-width: 100%;
+}
+
+.guest-homepage__navLink {
+  display: flex;
+  flex-direction: column;
+}
+
+.guest-homepage__navLink > button {
+  display: flex;
+  align-items: center;
+  border: 0;
+  outline: none;
+  background-color: transparent;
+
+  & > span:last-child {
+    margin-left: 0.35rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+}
+
+.guest-homepage__navLink:not(:first-child) {
+  margin-left: auto;
+}
+
+.guest-homepage__header__user,
+.guest-homepage__navLink > button {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.guest-homepage__navLink:not(:last-child) > button > span:last-child {
+  color: #b1afaf;
+  text-transform: uppercase;
+}
+
+//logout button
+.guest-homepage__navLink:last-child > button {
+  background-color: color.$primary-color;
+  padding-left: 0.85rem;
+  padding-right: 0.85rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  transition: all 0.5s ease-in;
+  //   box-shadow: 1px 10px 30px rgba(color.$primary-color, 0.15);
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+
+  &:hover,
+  &:focus {
+    color: #fff;
+    background-color: #ce0033;
+    box-shadow: none;
+  }
+}
+
+//hero styles
+.guest-homepage-content__container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 10rem auto;
+}
+
+.mega-text {
+  text-align: right;
+}
+.mega-text__small {
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+  letter-spacing: 0.15px;
+  text-transform: uppercase;
+}
+
+.mega-text__large {
+  display: flex;
+  flex-direction: column;
+  font-size: 4.25rem;
+  font-weight: 600;
+  font-family: "Oswald", sans-serif;
+  margin-bottom: 3rem;
+}
+
+.guest-homepage-content__hero-search {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background-color: #fff;
+  position: relative;
+  top: 40px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+    rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  border: 1px solid rgba(201, 199, 199, 0.5);
+  border-radius: 3px;
+}
+
+.hero-search__block {
+  display: flex;
+}
+
+//serach Icon
+.search-icon__block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+//input
+.hero-search__input-block {
+  display: flex;
+  width: 920px;
+
+  margin: 0 auto;
+
+  & > input {
+    width: 100%;
+    border: 0;
+    background-color: transparent;
+    padding: 1.25rem;
+    font-family: inherit;
+    font-size: 1.15rem;
+    outline: none;
+    color: #fff;
+  }
+
+  & > input:focus {
+    background-color: lighten(color.$primary-black, 0.35);
+  }
+
+  & > input:not(:focus) {
+    color: unset;
+  }
+}
+
+//search button
+.hero-search__button {
+  display: flex;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+
+  & > button {
+    font-weight: 600;
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
+    font-size: 1.05rem;
+    background-color: color.$primary-color;
+    border-radius: 5px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+      rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+    transition: all 0.5s ease-in;
+  }
+
+  & > button:focus,
+  & > button:hover {
+    background-color: #000;
+    color: #fff;
+    box-shadow: none;
+  }
+}

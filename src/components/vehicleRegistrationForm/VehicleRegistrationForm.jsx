@@ -68,6 +68,16 @@ const VehicleRegistrationForm = ({ formHidden, FormHandler }) => {
               <div className="text-input-block">
                 <input
                   type="text"
+                  name="model"
+                  id=""
+                  placeholder="Vehicle Lincensed Plate Number"
+                />
+              </div>
+            </div>
+            <div className="avis__gstForm__control">
+              <div className="text-input-block">
+                <input
+                  type="text"
                   name="vin"
                   id=""
                   placeholder="Vehicle Identification Number"
