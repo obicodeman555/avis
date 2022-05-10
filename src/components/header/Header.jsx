@@ -54,7 +54,7 @@ const Header = ({ stickyHeader }) => {
             >
               <div className="link__buttonShaped">
                 <Link
-                  to="/auth/admin"
+                  to="/auth/admin/login"
                   className="link__buttonShaped--linkToAcctType"
                 >
                   <span>
@@ -76,7 +76,7 @@ const Header = ({ stickyHeader }) => {
               </div>
               <div className="link__buttonShaped">
                 <Link
-                  to="/auth/guest"
+                  to="/auth/guest/login"
                   className="link__buttonShaped--linkToAcctType"
                 >
                   <span>
