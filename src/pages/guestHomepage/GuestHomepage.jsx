@@ -4,6 +4,10 @@ import userActiveIcon from "../../assets/svgs/user-active.svg";
 import gear from "../../assets/svgs/gear.svg";
 import logoutIcon from "../../assets/svgs/power.svg";
 import userProfile from "../../assets/svgs/user-profile.svg";
+import car from "../../assets/images/car.png";
+import ProfileOverview from "../../components/profileOverview/ProfileOverview";
+import { Link } from "react-router-dom";
+
 const GuestHomepage = () => {
   // const [search, setSearch] = useState('')
 
@@ -65,16 +69,21 @@ const GuestHomepage = () => {
           </nav>
         </header>
         <main className="guest-homepage-content">
-          <section className="guest-homepage-content__container">
+          <section className="container">
             <div className="guest-homepage-content__hero">
               <div className="guest-homepage-content__hero-block">
                 <div className="mega-text">
                   <div className="mega-text__small">
-                    Get to know who is driving
+                    <Link to="/">
+                      Don't have a VIN? <strong>START HERE</strong>, search
+                      later
+                    </Link>
                   </div>
                   <div className="mega-text__large">
-                    <span>Automated Identification of Official Vehicles</span>
-                    <span>Powering Trusted Identities</span>
+                    <span>
+                      Reasearch an Official Vehicle By{" "}
+                      <span className="primary-text-color">VIN Number</span>
+                    </span>
                   </div>
                 </div>
                 <div className="guest-homepage-content__hero-search">
@@ -107,7 +116,7 @@ const GuestHomepage = () => {
                       <input
                         type="text"
                         name="vin-search"
-                        placeholder="Search by vehicle identification number"
+                        placeholder="Enter VIN number: 1VWBN7A35CCxxxxxx"
                         autoFocus
                       />
                     </div>
@@ -117,9 +126,15 @@ const GuestHomepage = () => {
                   </div>
                 </div>
               </div>
+              <div className="guest-homepage-content__hero-image-block">
+                <div className="circled-background">
+                  <img src={car} alt="hero car" />
+                </div>
+              </div>
             </div>
           </section>
-        </main>
+        </main>{" "}
+        <ProfileOverview />
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 @use "../../styles/sass/color.scss" as color;
-.guest-homepage {
-  background-color: #e7ebf1;
-}
+// .guest-homepage {
+//   background-color: #e7ebf1;
+// }
 .guest-homepage__header {
   display: flex;
   align-items: center;
@@ -105,27 +105,52 @@
 }
 
 //hero styles
-.guest-homepage-content__container {
-  max-width: 1200px;
-  width: 100%;
-  margin: 10rem auto;
+.guest-homepage-content__hero {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  &-image-block {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    .circled-background {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+.guest-homepage-content {
+  background-color: #e7ebf1;
+  padding-top: 8rem;
+  margin-bottom: 5rem;
 }
 
 .mega-text {
   text-align: right;
 }
 .mega-text__small {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   font-weight: 700;
   margin-bottom: 0.35rem;
   letter-spacing: 0.15px;
   text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+
+  & > a {
+    text-decoration: underline;
+    text-transform: initial;
+
+    strong {
+      font-weight: 900;
+    }
+  }
 }
 
 .mega-text__large {
   display: flex;
   flex-direction: column;
-  font-size: 4.25rem;
+  font-size: 4.15rem;
   font-weight: 600;
   font-family: "Oswald", sans-serif;
   margin-bottom: 3rem;
@@ -136,7 +161,7 @@
   padding-right: 1rem;
   background-color: #fff;
   position: relative;
-  top: 40px;
+  top: 30px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
     rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
   border: 1px solid rgba(201, 199, 199, 0.5);
