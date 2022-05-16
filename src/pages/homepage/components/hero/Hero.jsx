@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { VehicleRegistrationForm } from "../../../../components";
 import AvisPrimaryButton from "../../../../components/avisPrimaryButton/AvisPrimaryButton";
 import "./hero.scss";
@@ -6,10 +6,10 @@ import "./hero.scss";
 const Hero = React.forwardRef((props, ref) => {
   const [formHidden, setFormHidden] = React.useState(false);
 
-  const FormHandler = useCallback((e) => {
+  const FormHandler = (e) => {
     e.preventDefault();
     setFormHidden((prev) => !prev);
-  }, []);
+  };
 
   return (
     <>

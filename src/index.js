@@ -3,16 +3,18 @@ import ReactDOM from "react-dom/client";
 import "./styles/sass/reset.scss";
 import "./styles/sass/base.scss";
 import { BrowserRouter } from "react-router-dom";
-
+import { ModalProvider } from "./context/modal_context";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <ModalProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ModalProvider>
   </React.StrictMode>
 );
 
