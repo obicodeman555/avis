@@ -1,0 +1,25 @@
+//style for icon marked x-shaped that is used to remove
+//registration form dynamically
+.avis-closeButton__block {
+  position: fixed;
+  z-index: 9999;
+  left: 62%;
+  top: 3%;
+
+  & > button {
+    display: flex;
+    padding: 1rem;
+    border-radius: 50%;
+    background-color: transparent;
+    transition: background-color 0.5s, fill 1s, cubic-bezier(0.19, -1, 0.22, -1);
+
+    &:hover,
+    &:focus {
+      background-color: #e8f0fe73;
+
+      & > svg path {
+        fill: #000;
+      }
+    }
+  }
+}

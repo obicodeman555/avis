@@ -1,0 +1,19 @@
+@use "../../../../styles/sass/color.scss" as *;
+
+.content-management__header__lower-content {
+  margin-top: 4rem;
+}
+
+.createButton-with-dropdown > button {
+  background-color: $primary-color;
+  border: 0;
+  &:hover,
+  &:focus {
+    transition: box-shadow, background-color, color 250ms ease-in;
+    box-shadow: 1px 1px 0px 1px rgba($primary-color, 0.85),
+      -1px -1px 0px 1px rgba($primary-color, 0.85);
+    color: darkslategray;
+    background-color: $primary-color-light;
+    font-weight: 100;
+  }
+}

@@ -5,7 +5,7 @@ import gear from "../../assets/svgs/gear.svg";
 import logoutIcon from "../../assets/svgs/power.svg";
 import userProfile from "../../assets/svgs/user-profile.svg";
 import car from "../../assets/images/car.png";
-import ProfileOverview from "../../components/profileOverview/ProfileOverview";
+// import ProfileOverview from "../../components/profileOverview/ProfileOverview";
 import { Link } from "react-router-dom";
 
 const GuestHomepage = () => {
@@ -75,7 +75,7 @@ const GuestHomepage = () => {
                 <div className="mega-text">
                   <div className="mega-text__small">
                     <Link to="/">
-                      Don't have a VIN? <strong>START HERE</strong>, search
+                      Can't find a VIN? <strong>START HERE</strong>, search
                       later
                     </Link>
                   </div>
@@ -126,15 +126,15 @@ const GuestHomepage = () => {
                   </div>
                 </div>
               </div>
-              <div className="guest-homepage-content__hero-image-block">
-                <div className="circled-background">
+              <div className="guest-homepage-content__hero-image">
+                <div className="guest-homepage-content__hero-image-block">
                   <img src={car} alt="hero car" />
                 </div>
               </div>
             </div>
           </section>
-        </main>{" "}
-        <ProfileOverview />
+        </main>
+        {/* <ProfileOverview /> */}
       </div>
     </div>
   );

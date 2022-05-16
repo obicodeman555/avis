@@ -1,35 +1,100 @@
 import React from "react";
+import "./profile-overview.scss";
+import profileIcon from "../../assets/svgs/profile.svg";
+import carIcon from "../../assets/svgs/car.svg";
+import plateNumberIcon from "../../assets/svgs/plate_number.svg";
+import vinIcon from "../../assets/svgs/vin.svg";
+import suitcaseIcon from "../../assets/svgs/suitcase.svg";
+import searchFoundImage from "../../assets/images/search-found.png";
 
 const ProfileOverview = () => {
   return (
-    <section>
+    <section className="profile-overview">
       <div className="container">
         <div className="profile-content">
-          <div className="grid-col-3">
-            <div className="profile-content__item">
-              <div className="profile-content__image-block">
-                <span>
-                  <img src="" alt="profile" />
-                </span>
-              </div>
-              <div>
-                <svg
-                  width="40"
-                  height="40"
-                  viewBox="0 0 40 40"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M15 5C16.2361 5 17.4445 5.36656 18.4723 6.05331C19.5001 6.74007 20.3012 7.71619 20.7742 8.85823C21.2473 10.0003 21.3711 11.2569 21.1299 12.4693C20.8888 13.6817 20.2935 14.7953 19.4194 15.6694C18.5453 16.5435 17.4317 17.1388 16.2193 17.3799C15.0069 17.6211 13.7503 17.4973 12.6082 17.0242C11.4662 16.5512 10.4901 15.7501 9.80331 14.7223C9.11656 13.6945 8.75 12.4861 8.75 11.25C8.75 9.5924 9.40848 8.00269 10.5806 6.83058C11.7527 5.65848 13.3424 5 15 5V5ZM15 2.5C13.2694 2.5 11.5777 3.01318 10.1388 3.97464C8.69983 4.9361 7.57832 6.30267 6.91605 7.90152C6.25379 9.50037 6.08051 11.2597 6.41813 12.957C6.75575 14.6544 7.58911 16.2135 8.81282 17.4372C10.0365 18.6609 11.5956 19.4943 13.293 19.8319C14.9903 20.1695 16.7496 19.9962 18.3485 19.3339C19.9473 18.6717 21.3139 17.5502 22.2754 16.1112C23.2368 14.6723 23.75 12.9806 23.75 11.25C23.75 8.92936 22.8281 6.70376 21.1872 5.06282C19.5462 3.42187 17.3206 2.5 15 2.5V2.5ZM27.5 37.5H25V31.25C25 29.5924 24.3415 28.0027 23.1694 26.8306C21.9973 25.6585 20.4076 25 18.75 25H11.25C9.5924 25 8.00269 25.6585 6.83058 26.8306C5.65848 28.0027 5 29.5924 5 31.25V37.5H2.5V31.25C2.5 28.9294 3.42187 26.7038 5.06282 25.0628C6.70376 23.4219 8.92936 22.5 11.25 22.5H18.75C21.0706 22.5 23.2962 23.4219 24.9372 25.0628C26.5781 26.7038 27.5 28.9294 27.5 31.25V37.5ZM27.5 5H40V7.5H27.5V5ZM27.5 11.25H40V13.75H27.5V11.25ZM27.5 17.5H36.25V20H27.5V17.5Z"
-                    fill="#B1AFAF"
-                  />
-                </svg>
-                <span>afe babalola</span>
-                <span>chief financial officer</span>
-              </div>
+          <header className="profile-content-header">
+            <h1 className="x-large--text">Profie Information Found</h1>
+            <div>
+              <img src={searchFoundImage} alt="search found" />
             </div>
-            <div className="profile-content__item"></div>
+          </header>
+          <div className="grid-col-3">
+            <div className="profile-content__item grid-span-2">
+              <span className="profile-content__icon profile-content__icon--positioned-absolute">
+                <img src={profileIcon} alt="profile icon" />
+              </span>
+              <span className="column-flexed text-aligned-center personality-info">
+                <span className="x-large--text capitalize-text gray-colored-text mr-top-lg">
+                  afe babalola
+                </span>
+                <span className="capitalize-text gray-colored-text medium--text">
+                  chief financial officer
+                </span>
+                <span className="silver-pink-colored-text medium--text">
+                  Employment Reg No: AFE/0321/15/34432
+                </span>
+              </span>
+            </div>
+            <div className="profile-content__item">
+              <span className="large--text text-aligned-center primary-text-color">
+                Vehicle Model/Make
+              </span>
+              <span className="profile-content__icon">
+                <img src={carIcon} alt="car icon" />
+              </span>
+              <span className="description text-aligned-center gray-colored-text">
+                The make of a car is the brand of the car and the model is the
+                specific product.
+              </span>
+              <span className="silver-pink-colored-text medium--text">
+                Mercedes-Benz 225
+              </span>
+            </div>
+            <div className="profile-content__item">
+              <span className="large--text text-aligned-center primary-text-color">
+                Vehicle Lincensed Plate Number
+              </span>
+              <span className="profile-content__icon">
+                <img src={plateNumberIcon} alt="plate number icon" />
+              </span>
+              <span className="description text-aligned-center gray-colored-text">
+                The official set of numbers and letters shown on the front and
+                back of a road vehicle
+              </span>
+              <span className="silver-pink-colored-text medium--text">
+                GGE - 123ZY
+              </span>
+            </div>
+            <div className="profile-content__item">
+              <span className="large--text text-aligned-center primary-text-color">
+                Vehicle Identification Number
+              </span>
+              <span className="profile-content__icon">
+                <img src={vinIcon} alt="plate number icon" />
+              </span>
+              <spanc className="description text-aligned-center gray-colored-text">
+                A unique code, including a seria number, used by the automotive
+                industry to identify individual vehicles
+              </spanc>
+              <span className="silver-pink-colored-text medium--text">
+                1HD1BX510BB027648
+              </span>
+            </div>
+            <div className="profile-content__item">
+              <span className="large--text text-aligned-center primary-text-color">
+                Offical Department/Office
+              </span>
+              <span className="profile-content__icon">
+                <img src={suitcaseIcon} alt="plate number icon" />
+              </span>
+              <span className="description text-aligned-center gray-colored-text">
+                Where employees perform administrative work to support and
+                realize goals of of the institution
+              </span>
+              <span className="silver-pink-colored-text medium--text">
+                Software Engineering
+              </span>
+            </div>
           </div>
         </div>
       </div>

@@ -108,11 +108,11 @@
 .guest-homepage-content__hero {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  &-image-block {
+  &-image {
     display: grid;
     grid-template-columns: 1fr;
 
-    .circled-background {
+    &-block {
       display: flex;
       justify-content: center;
     }
@@ -122,7 +122,6 @@
 .guest-homepage-content {
   background-color: #e7ebf1;
   padding-top: 8rem;
-  margin-bottom: 5rem;
 }
 
 .mega-text {

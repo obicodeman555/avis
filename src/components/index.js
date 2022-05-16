@@ -6,6 +6,9 @@ import ScrollToTop from "./scroll-to-top/ScrollToTop";
 import PrimaryCard from "./primaryCard/PrimaryCard";
 import VehicleRegistrationForm from "./vehicleRegistrationForm/VehicleRegistrationForm";
 import RouteBackLink from "./routeBackLink/RouteBackLink";
+import Sidebar from "./sidebar/Sidebar";
+import Icon from "./icon/Icon";
+import CloseModalButton from "./closeModalButton/CloseModalButton";
 
 export {
   Loading,
@@ -16,4 +19,7 @@ export {
   PrimaryCard,
   VehicleRegistrationForm,
   RouteBackLink,
+  Sidebar,
+  Icon,
+  CloseModalButton,
 };

@@ -12,7 +12,7 @@
   background-color: rgba(36, 36, 36, 0.788);
   padding-top: 5rem;
   padding-bottom: 10rem;
-  transform: translateX(200%);
+  transform: scale(0.35) translateX(200%);
   transition: transform 0.5s, opacity 0.75s ease-in;
   opacity: 0;
   overflow-y: scroll;
@@ -32,34 +32,8 @@
 // javascript dynamic style
 //applied when registration form is invoked
 .avis-reg-popup__show {
-  transform: translateX(0);
+  transform: scale(1) translateX(0);
   opacity: 1;
-}
-
-//style for icon marked x-shaped that is used to remove
-//registration form dynamically
-.avis-reg-popup__close {
-  position: fixed;
-  z-index: 9999;
-  left: 62%;
-  top: 3%;
-  display: flex;
-  & > button {
-    display: flex;
-    padding: 1rem;
-    border-radius: 50%;
-    background-color: transparent;
-    transition: background-color 0.5s, fill 1s, cubic-bezier(0.19, -1, 0.22, -1);
-
-    &:hover,
-    &:focus {
-      background-color: #e8f0fe73;
-
-      & > svg path {
-        fill: #000;
-      }
-    }
-  }
 }
 
 .avis-reg-content {

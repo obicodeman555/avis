@@ -1,0 +1,96 @@
+@use "../../styles/sass/color.scss" as *;
+
+.sidebar {
+  padding: 3rem 0 0;
+  height: 100%;
+  width: 300px;
+  background-color: $primary-black-variant-3;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
+    rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+
+  &__header {
+    font-weight: 700;
+    color: $primary-color;
+    letter-spacing: 0.35px;
+    margin-bottom: 3rem;
+    font-size: 1.45rem;
+
+    & > div:last-child {
+      text-align: center;
+      padding-right: 4rem;
+    }
+
+    //toggle button icon
+    .toogle-sidebar-width-button {
+      border: 0;
+      background-color: transparent;
+      outline: none;
+    }
+  }
+}
+.sidebar__nav {
+  height: inherit;
+  width: 100%;
+}
+
+.sidebar__list {
+  height: 75%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  &-item {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-item:not(:first-child) {
+    margin-top: 2rem;
+  }
+
+  &-item:last-child {
+    margin-top: auto;
+  }
+}
+
+.sidebar__list-item__link {
+  height: 60px;
+  color: $primary-white;
+  font-size: 1.05rem;
+  font-weight: 400;
+
+  & > span:last-child {
+    display: flex;
+    & > span {
+      // border: 1px solid;
+      padding: 0.55rem 1rem;
+      border-radius: 10px 10px 10px 0;
+    }
+  }
+
+  & > span:last-child > span:hover {
+    background-color: $primary-color-light;
+  }
+
+  &.active-link > span:first-child {
+    transition: transform 0.2s ease-in;
+    transform: translateX(5px);
+  }
+
+  &.active-link > span:last-child > span {
+    background-color: $primary-color-light;
+    transition: transform, color 0.2s ease-in;
+    color: $primary-black;
+    transform: translateX(5px);
+  }
+}
+
+//resused icon styling alot, pls componentize
+
+.sidebar__header,
+.sidebar__list-item__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
