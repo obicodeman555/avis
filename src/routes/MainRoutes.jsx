@@ -19,8 +19,12 @@ const ContentManagement = React.lazy(() =>
 const Home = React.lazy(() =>
   import("../pages/content-management/components/home/Home")
 );
-const Staffs = React.lazy(() =>
-  import("../pages/content-management/components/staffs/Staffs")
+const Member = React.lazy(() =>
+  import("../pages/content-management/components/member/Member")
+);
+
+const RegisteredCars = React.lazy(() =>
+  import("../pages/content-management/components/reg-cars/RegisteredCars")
 );
 
 const MainRoutes = () => {
@@ -37,7 +41,8 @@ const MainRoutes = () => {
             element={<Navigate replace to="home" />}
           />
           <Route path="home" element={<Home />} />
-          <Route path="staffs" element={<Staffs />} />
+          <Route path="member" element={<Member />} />
+          <Route path="official-cars" element={<RegisteredCars />} />
         </Route>
       </Routes>
     </Suspense>

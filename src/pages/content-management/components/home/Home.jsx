@@ -40,10 +40,10 @@ const Home = () => {
                 <span>Fullname</span>
                 <span>Staff reg. number</span>
                 <span>Vehicle model/make/year</span>
-                <span>Vehicle plate number</span>
+                <span>Vehicle Plate Number</span>
                 <span>Vehicle Identification Number</span>
-                <span>Official Job Position</span>
-                <span>Official Job Department/Office</span>
+                <span>Official Position</span>
+                <span>Official Department/Office</span>
                 <span>Actions</span>
               </div>
             </div>
