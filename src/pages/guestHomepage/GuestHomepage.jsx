@@ -5,7 +5,7 @@ import gear from "../../assets/svgs/gear.svg";
 import logoutIcon from "../../assets/svgs/power.svg";
 import userProfile from "../../assets/svgs/user-profile.svg";
 import car from "../../assets/images/car.png";
-// import ProfileOverview from "../../components/profileOverview/ProfileOverview";
+import ProfileOverview from "../../components/profileOverview/ProfileOverview";
 import { Link } from "react-router-dom";
 
 const GuestHomepage = () => {
@@ -134,7 +134,7 @@ const GuestHomepage = () => {
             </div>
           </section>
         </main>
-        {/* <ProfileOverview /> */}
+        <ProfileOverview />
       </div>
     </div>
   );
