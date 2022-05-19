@@ -3,8 +3,11 @@ import "./home.scss";
 import CtMgtHeader from "../ctmgt-header/CtMgtHeader";
 import deleteIcon from "../../../../assets/svgs/delete-forever.svg";
 import checkmarkIcon from "../../../../assets/svgs/checkmark.svg";
+import { useOutletContext } from "react-router-dom";
 
 const Home = () => {
+  const { members, staffs, officialVehicles } = useOutletContext();
+
   return (
     <section className="content-management-home">
       <CtMgtHeader
@@ -23,11 +26,15 @@ const Home = () => {
             <span className="fw-600 data-info-title">
               Total Authorised Users
             </span>
-            <span className="mr-top-1 fw-700 data-info-count">2100</span>
+            <span className="mr-top-1 fw-700 data-info-count">
+              {members?.length}
+            </span>
           </div>
           <div className="flex-container dtr-flexed-clm p-7">
             <span className="fw-600 data-info-title">Total Staffs</span>
-            <span className="mr-top-1 fw-700 data-info-count">2100</span>
+            <span className="mr-top-1 fw-700 data-info-count">
+              {staffs?.length}
+            </span>
           </div>
         </div>
         <div className="data-info__content mr-top-4">
@@ -48,23 +55,33 @@ const Home = () => {
               </div>
             </div>
             <div className="table-body p-6">
-              <div className="table-row flex-container">
-                <span>Afe Babalola</span>
-                <span>AFE3574889</span>
-                <span>Toyota Forerunner 2019</span>
-                <span>SSM687GJ</span>
-                <span>1G1YZ23J9P5803427</span>
-                <span>Senior Lecturer</span>
-                <span>Computer Science</span>
-                <span className="flex-container j-ct-ctr">
-                  <span>
-                    <img src={deleteIcon} alt="" />
-                  </span>
-                  <span>
-                    <img src={checkmarkIcon} alt="" />
-                  </span>
-                </span>
-              </div>
+              {officialVehicles
+                ?.filter((vehicle) => vehicle.isApproved === false)
+                .map((staff) => (
+                  <div
+                    className="table-row flex-container alg-itms-ctr p-6"
+                    key={staff.id}
+                  >
+                    <span>{staff.fullName}</span>
+                    <span>{staff.staffRegNumber}</span>
+                    <span>{staff.vehicleModel}</span>
+                    <span>{staff.vehiclePlateNumber}</span>
+                    <span>{staff.vin}</span>
+                    <span>{staff.jobPosition}</span>
+                    <span>{staff.staffDept}</span>
+                    <span className="flex-container j-ct-ctr">
+                      <span role="button">
+                        <img src={deleteIcon} alt="" />
+                      </span>
+                      <span
+                        role="button"
+                        // onClick={() => approvedVehiclesHandler(staff.id)}
+                      >
+                        <img src={checkmarkIcon} alt="" />
+                      </span>
+                    </span>
+                  </div>
+                ))}
             </div>
           </article>
         </div>

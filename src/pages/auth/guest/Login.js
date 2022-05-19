@@ -1,10 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AvisPrimaryButton, RouteBackLink } from "../../../components";
 import manTyping from "../../../assets/images/man-typing.png";
 import "./login.scss";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const loginHandler = () => {
+    localStorage.setItem("user", "text");
+    navigate("/guest/home");
+  };
+
   return (
     <div className="guest__background font-body">
       <RouteBackLink linkTo="/" />
@@ -30,7 +36,10 @@ const Login = () => {
               </div>
               <div className="form-control">
                 <span className="form-control__button-block">
-                  <AvisPrimaryButton buttonText="Login your account" />
+                  <AvisPrimaryButton
+                    buttonText="Login your account"
+                    onClick={loginHandler}
+                  />
                 </span>
               </div>
             </div>

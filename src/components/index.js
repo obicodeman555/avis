@@ -9,6 +9,7 @@ import RouteBackLink from "./routeBackLink/RouteBackLink";
 import Sidebar from "./sidebar/Sidebar";
 import Icon from "./icon/Icon";
 import CloseModalButton from "./closeModalButton/CloseModalButton";
+import Notify from "./notification/Notify";
 
 export {
   Loading,
@@ -22,4 +23,5 @@ export {
   Sidebar,
   Icon,
   CloseModalButton,
+  Notify,
 };

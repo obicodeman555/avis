@@ -1,13 +1,46 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
-import { Sidebar, Icon } from "../../components";
+import { Sidebar, Icon, Notify } from "../../components";
 import "./content-management.scss";
 import HomeCreateModal from "./components/ctmgt-modal/CtMgtModal";
 import staffIcon from "../../assets/svgs/briefcase.svg";
 import userIcon from "../../assets/svgs/user-circle.svg";
+import useHttp from "../../hooks/useHttp";
+import { getAllMembers, getAllStaffs, getAllVehicles } from "../../lib/api";
+import CreateMemberForm from "./components/create-member-form/CreateMemberForm";
+import CreateStaffForm from "./components/create-staff-form/CreateStaffForm";
 
 const ContentManagement = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const [showNotify, setShowNotify] = useState(false);
+
+  const {
+    sendRequest: membersRequest,
+    status,
+    data: members,
+    error,
+  } = useHttp(getAllMembers, true);
+  const {
+    sendRequest: staffsRequest,
+
+    data: staffs,
+  } = useHttp(getAllStaffs, true);
+
+  const { sendRequest: officialVehiclesRequest, data: officialVehicles } =
+    useHttp(getAllVehicles, true);
+
+  useEffect(() => {
+    membersRequest();
+    staffsRequest();
+    officialVehiclesRequest();
+  }, [membersRequest, staffsRequest, officialVehiclesRequest]);
+
+  useEffect(() => {
+    //remove notification
+    setTimeout(() => {
+      setShowNotify(false);
+    }, 5000);
+  }, [showNotify]);
 
   const activeTabHandler = (e) => {
     e.target.name === "staff-tab-button"
@@ -18,9 +51,16 @@ const ContentManagement = () => {
   };
   return (
     <main className="content-management font-body">
+      <Notify
+        showNotify={showNotify}
+        notifyMsg="Information has been sucessfully added"
+        notifyStatus="Success"
+      />
       <Sidebar />
       <div className="content">
-        <Outlet />
+        <Outlet
+          context={{ status, members, error, staffs, officialVehicles }}
+        />
       </div>
       <HomeCreateModal>
         <header className="home-create-modal__header">
@@ -73,94 +113,18 @@ const ContentManagement = () => {
         <div className="acct-type-tab-button__content-block rounded-br-lg p-7">
           {activeTab === 1 && (
             <div className="tab-button__content-1 h-100">
-              <form className="tab-button__content-form flex-container dtr-flexed-clm h-100">
-                <div className="flex-container dtr-flexed-clm">
-                  <label htmlFor="staff-name">Staff Fullnames</label>
-                  <input
-                    type="text"
-                    name=""
-                    id="staff-name"
-                    className="mr-top-sm p-6"
-                  />
-                </div>
-                <div className="flex-container dtr-flexed-clm mr-top-1">
-                  <label htmlFor="dept">Department</label>
-                  <input
-                    type="text"
-                    name="dept"
-                    id="dept"
-                    className="mr-top-sm p-6"
-                  />
-                </div>
-                <div className="flex-container dtr-flexed-clm mr-top-1">
-                  <label htmlFor="job-status">Job Status</label>
-                  <input
-                    type="text"
-                    name="job-status"
-                    id="job-status"
-                    className="mr-top-sm p-6"
-                  />
-                </div>
-                <div className="flex-container dtr-flexed-clm mr-top-1">
-                  <label htmlFor="employee_code">Employee Reg Number</label>
-                  <input
-                    type="text"
-                    id="employee_code"
-                    className="mr-top-sm p-6"
-                  />
-                </div>
-
-                <div className="flex-container dtr-flexed-clm mr-top-auto">
-                  <button
-                    className="staff-create-button rounded-br-lg rounded-t-lg fw-600"
-                    type="button"
-                  >
-                    Register
-                  </button>
-                </div>
-              </form>
+              <CreateStaffForm
+                showNotify={showNotify}
+                setShowNotify={setShowNotify}
+              />
             </div>
           )}
           {activeTab === 2 && (
             <div className="tab-button__content-2 h-100">
-              <form className="tab-button__content-form flex-container dtr-flexed-clm h-100">
-                <div className="flex-container dtr-flexed-clm">
-                  <label htmlFor="staff-name">Member Fullnames</label>
-                  <input
-                    type="text"
-                    name=""
-                    id="staff-name"
-                    className="mr-top-sm p-6"
-                  />
-                </div>
-                <div className="flex-container dtr-flexed-clm mr-top-1">
-                  <label htmlFor="email">Email address</label>
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    className="mr-top-sm p-6"
-                  />
-                </div>
-                <div className="flex-container dtr-flexed-clm mr-top-1">
-                  <label htmlFor="job-status">Password</label>
-                  <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    className="mr-top-sm p-6"
-                  />
-                </div>
-
-                <div className="flex-container dtr-flexed-clm mr-top-auto">
-                  <button
-                    className="staff-create-button rounded-br-lg rounded-t-lg fw-600"
-                    type="button"
-                  >
-                    Register
-                  </button>
-                </div>
-              </form>
+              <CreateMemberForm
+                showNotify={showNotify}
+                setShowNotify={setShowNotify}
+              />
             </div>
           )}
         </div>
