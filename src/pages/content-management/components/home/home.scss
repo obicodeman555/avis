@@ -93,6 +93,10 @@
   & > .table-row > span:last-child > span:last-child {
     margin-left: 0.5rem;
   }
+
+  & > .table-row:not(:last-child) {
+    border-bottom: 1px solid #565541;
+  }
 }
 
 .table-row > span {

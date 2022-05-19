@@ -1,5 +1,6 @@
 import React, { Suspense } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
+import ProtectedRoutes from "./ProtectedRoutes";
 import { Loading } from "../components";
 
 const Homepage = React.lazy(() => import("../pages/homepage/Homepage"));
@@ -34,7 +35,10 @@ const MainRoutes = () => {
         <Route path="/" element={<Homepage />} />
         <Route path="/auth/admin/login" element={<AdminLoginPage />} />
         <Route path="/auth/guest/login" element={<GuestLoginPage />} />
-        <Route path="/guest/home" element={<GuestHomepage />} />
+        <Route path="/guest/home" element={<ProtectedRoutes />}>
+          <Route path="/guest/home" element={<GuestHomepage />} />
+        </Route>
+
         <Route path="content-management" element={<ContentManagement />}>
           <Route
             path="/content-management"

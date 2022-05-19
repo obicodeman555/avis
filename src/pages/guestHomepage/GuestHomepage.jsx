@@ -6,9 +6,10 @@ import logoutIcon from "../../assets/svgs/power.svg";
 import userProfile from "../../assets/svgs/user-profile.svg";
 import car from "../../assets/images/car.png";
 import ProfileOverview from "../../components/profileOverview/ProfileOverview";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const GuestHomepage = () => {
+  const navigate = useNavigate();
   // const [search, setSearch] = useState('')
 
   // function handleInput(evt) {
@@ -20,6 +21,11 @@ const GuestHomepage = () => {
   //     const result = await  axios.get(`http://localhost:5000/api/shirts?vin=${value}`)
   // // } {/* <input type="search" name="" id="" />
   //   <button type="button" onSubmit={() => callApi(search)}>search</button> */}
+
+  const logout = () => {
+    localStorage.removeItem("user");
+    navigate("/auth/guest/login");
+  };
 
   return (
     <div className="guest-homepage">
@@ -55,7 +61,7 @@ const GuestHomepage = () => {
                 </button>
               </li>
               <li className="guest-homepage__navLink">
-                <button type="button">
+                <button type="button" onClick={logout}>
                   <span className="guest-homepage__icon-block">
                     <img
                       src={logoutIcon}

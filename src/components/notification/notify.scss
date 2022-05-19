@@ -1,0 +1,36 @@
+@use "../../styles/sass/color.scss" as *;
+
+.notification {
+  position: fixed;
+  z-index: 999999;
+  background-color: #444444;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  left: 50%;
+  top: 0;
+  transform: translateY(-200%);
+  transition: transform 800ms ease-in;
+
+  //javascript programtic class
+  &.activate--notify {
+    transform: translateY(0%);
+  }
+}
+
+.notification__content {
+  padding: 1rem;
+
+  & > span:last-child {
+    margin-left: 1rem;
+
+    & > span:first-child {
+      color: $primary-white;
+      font-size: 1.65rem;
+      margin-bottom: 0.5rem;
+    }
+    & > span:last-child {
+      color: $primary-color;
+      font-size: 1.25rem;
+    }
+  }
+}

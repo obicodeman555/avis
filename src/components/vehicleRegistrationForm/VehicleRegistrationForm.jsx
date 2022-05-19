@@ -1,9 +1,68 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import AvisPrimaryButton from "../avisPrimaryButton/AvisPrimaryButton";
 import CloseModalButton from "../closeModalButton/CloseModalButton";
+import { getAllStaffs, addRegisteredVehicle } from "../../lib/api";
+import useHttp from "../../hooks/useHttp";
 import "./vehicle-registration-form.scss";
+// import Notify from "../notification/Notify";
 
 const VehicleRegistrationForm = ({ formHidden, FormHandler }) => {
+  // const [showNotify, setShowNotify] = useState(false);
+  const staffFullNameRef = useRef(null);
+  const staffRegNumberRef = useRef(null);
+  const vehicleModelRef = useRef(null);
+  const vehiclePlateNumberRef = useRef(null);
+  const jobPositionRef = useRef(null);
+  const vinRef = useRef(null);
+  const staffDeptRef = useRef(null);
+
+  const { sendRequest: getStaffsRequest, data: staffs } = useHttp(
+    getAllStaffs,
+    true
+  );
+
+  const { sendRequest, status: addRegStatus } = useHttp(addRegisteredVehicle);
+
+  useEffect(() => {
+    getStaffsRequest();
+  }, [getStaffsRequest]);
+
+  const addRegisterVehicleHandler = (e) => {
+    e.preventDefault();
+
+    let vehicleData = {
+      fullName: staffFullNameRef.current.value,
+      staffRegNumber: staffRegNumberRef.current.value,
+      vehicleModel: vehicleModelRef.current.value,
+      vehiclePlateNumber: vehiclePlateNumberRef.current.value,
+      jobPosition: jobPositionRef.current.value,
+      vin: vinRef.current.value,
+      staffDept: staffDeptRef.current.value,
+      isApproved: false,
+    };
+
+    //check if staff registration number is valid
+    const checkRegNumber = (staff) => {
+      return staff.regNumber === vehicleData.staffRegNumber;
+    };
+
+    const staffFound = staffs.find(checkRegNumber);
+
+    if (staffFound) {
+      sendRequest(vehicleData);
+      staffFullNameRef.current.value = "";
+      staffRegNumberRef.current.value = "";
+      vehicleModelRef.current.value = "";
+      vehiclePlateNumberRef.current.value = "";
+      jobPositionRef.current.value = "";
+      vinRef.current.value = "";
+      staffDeptRef.current.value = "";
+      alert("Form Submitted, Kindly await approval");
+    } else {
+      alert("Form cannot be submitted due to incorrect staff reg number");
+    }
+  };
+
   return (
     <div
       className={`position-all-points ${
@@ -19,14 +78,15 @@ const VehicleRegistrationForm = ({ formHidden, FormHandler }) => {
               submit
             </div>
           </div>
-          <form className="avis__gstForm">
+          <form className="avis__gstForm" onSubmit={addRegisterVehicleHandler}>
             <div className="avis__gstForm__control">
               <div className="text-input-block">
                 <input
                   type="text"
                   name=""
-                  id=""
                   placeholder="Owner/Driver's full name"
+                  ref={staffFullNameRef}
+                  required
                 />
               </div>
             </div>
@@ -34,9 +94,9 @@ const VehicleRegistrationForm = ({ formHidden, FormHandler }) => {
               <div className="text-input-block">
                 <input
                   type="text"
-                  name=""
-                  id=""
+                  ref={staffRegNumberRef}
                   placeholder="Staff/Employment Registration Number"
+                  required
                 />
               </div>
             </div>
@@ -45,8 +105,9 @@ const VehicleRegistrationForm = ({ formHidden, FormHandler }) => {
                 <input
                   type="text"
                   name="model"
-                  id=""
+                  ref={vehicleModelRef}
                   placeholder="Vehicle Model"
+                  required
                 />
               </div>
             </div>
@@ -55,8 +116,9 @@ const VehicleRegistrationForm = ({ formHidden, FormHandler }) => {
                 <input
                   type="text"
                   name="model"
-                  id=""
                   placeholder="Vehicle Lincensed Plate Number"
+                  ref={vehiclePlateNumberRef}
+                  required
                 />
               </div>
             </div>
@@ -65,8 +127,9 @@ const VehicleRegistrationForm = ({ formHidden, FormHandler }) => {
                 <input
                   type="text"
                   name="vin"
-                  id=""
                   placeholder="Vehicle Identification Number"
+                  ref={vinRef}
+                  required
                 />
               </div>
             </div>
@@ -75,8 +138,9 @@ const VehicleRegistrationForm = ({ formHidden, FormHandler }) => {
                 <input
                   type="text"
                   name="job_position"
-                  id=""
                   placeholder="Your official Job Position"
+                  ref={jobPositionRef}
+                  required
                 />
               </div>
             </div>
@@ -85,8 +149,9 @@ const VehicleRegistrationForm = ({ formHidden, FormHandler }) => {
                 <input
                   type="text"
                   name="department"
-                  id=""
                   placeholder="Your official Department/Office"
+                  ref={staffDeptRef}
+                  required
                 />
               </div>
             </div>
@@ -121,7 +186,13 @@ const VehicleRegistrationForm = ({ formHidden, FormHandler }) => {
 
             <div className="avis__gstForm__control">
               <div className="avis__vregForm__componentWrapper">
-                <AvisPrimaryButton buttonText="Send" />
+                {console.log(addRegStatus)}
+                <AvisPrimaryButton
+                  buttonType="submit"
+                  buttonText={`${
+                    addRegStatus === "pending" ? "Processing..." : "Send"
+                  }`}
+                />
               </div>
             </div>
           </form>

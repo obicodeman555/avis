@@ -6,15 +6,18 @@ import { BrowserRouter } from "react-router-dom";
 import { ModalProvider } from "./context/modal_context";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { AuthContextProvider } from "./store/auth-context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <ModalProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </ModalProvider>
+    <AuthContextProvider>
+      <ModalProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ModalProvider>
+    </AuthContextProvider>
   </React.StrictMode>
 );
 
